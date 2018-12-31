@@ -33,6 +33,10 @@ vars:
 venv:
 	virtualenv ${VIRTUALENV}
 
+venv_clear:
+	@echo "Reinstalling..."
+	virtualenv ${VIRTUALENV} --clear
+
 venv_help:
 	@echo
 	@echo "source ${VIRTUALENV}/bin/activate"
