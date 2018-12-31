@@ -23,16 +23,29 @@ def lambda_handler(event, context):
         "mrkdwn": 'true'
     }
 
-    send_to_slack(msg)
+#   send_to_slack(msg)
+
+    return {
+        'code': 200
+    }
 
 
 def send_to_slack(msg, url=SLACK_URL):
 
     try:
-        req = Request(SLACK_URL, json.dumps(msg).encode('utf-8'))
-        response = urlopen(req)
-        response.read()
         logger.info("Slack: [%s]", msg)
+        print("Slack: [%s]", msg)
+        print('Url: {}'.format(SLACK_URL))
+
+        req = Request(SLACK_URL, json.dumps(msg).encode('utf-8'))
+        res = urlopen(req)
+        res.read()
+#       res = { 'code': 200, 'message': 'x'}
+        return {
+            'code':    res.code,
+            'message': res.msg
+        }
+
 
     except HTTPError as e:
         logger.error("Request failed: %d %s", e.code, e.reason)
@@ -43,5 +56,11 @@ def send_to_slack(msg, url=SLACK_URL):
 
 
 # main
-lambda_handler( { 'Event': 'test' }, { 'Context': 'test' })
+
+#if __name__ == "__main__":
+#    lambda_handler( { 'Event': 'test' }, { 'Context': 'test' })
+
+msg = { 'Event': 'test' }
+send_to_slack( msg )
+
 
