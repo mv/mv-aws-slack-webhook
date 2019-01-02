@@ -31,6 +31,7 @@ show:   ## - Show env vars
 
 init:   ## - Install from requirements.txt
 	pip install -r requirements.txt
+	pip install -r requirements-dev.txt
 
 clean:
 	find . -type d -name __pycache__ -exec rm -rf {} \; 2>/dev/null

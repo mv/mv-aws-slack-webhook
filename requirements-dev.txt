@@ -1,0 +1,10 @@
+
+pytest>=4.0.2,<5.0.0
+# pylint
+# pytest-pylint
+
+# moto
+# placebo
+
+# mypy
+

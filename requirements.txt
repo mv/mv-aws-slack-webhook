@@ -1,8 +1,7 @@
 
 boto3<2.0.0,>=1.9.71
-pytest>=4.0.2,<5.0.0
 
-# moto
-# placebo
+# boolean
+# docopt==0.6.1
 
 
